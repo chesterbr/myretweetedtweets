@@ -28,6 +28,7 @@ public class RetrieveTweetsServlet extends HttpServlet {
 				long id = Long.parseLong(path.substring(1));
 				User user = new User(id);
 				List<String> statuses = user.getMyRetweetedTweets();
+				response.setContentType("application/json");
 				if (callback != null) {
 					out.write(callback + "(");
 				}
