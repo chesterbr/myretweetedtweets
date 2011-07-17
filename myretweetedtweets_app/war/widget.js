@@ -42,8 +42,6 @@ function mtrWidgetCallback(tweetsJson) {
 	var mtrWidget = document.getElementById("mtrWidget");
 	if (mtrWidget) {
 		mtrWidget.innerHTML = mtrHTML;
-	} else {
-		document.write(mtrHTML);
 	}
 
 }
