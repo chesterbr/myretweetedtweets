@@ -27,9 +27,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 			User user = new User();
 			user.finishAuthorization(token, tokenSecret);
 			user.persist();
-			request.setAttribute("id", Long.toString(user.getId()));
-			request.getRequestDispatcher("/instructions.jsp").forward(request,
-					response);
+			response.sendRedirect("/instructions.jsp?id=" + user.getId());
 		} catch (TwitterException te) {
 			throw new ServletException(te);
 		}
