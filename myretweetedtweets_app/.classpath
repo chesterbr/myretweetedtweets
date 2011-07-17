@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/twitter4j-core-2.2.3.jar" sourcepath="/Users/chester/Downloads/twitter4j-2.2.3/twitter4j-core/twitter4j-core-2.2.3-sources.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
