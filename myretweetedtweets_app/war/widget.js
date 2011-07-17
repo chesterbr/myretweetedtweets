@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// IF YOU EDIT THIS FILE, RUN jsmin < widget.js > widget-min.js !!!!!
+
 function mtrWidgetCallback(tweetsJson) {
 
 	var tweets = tweetsJson.tweets;
