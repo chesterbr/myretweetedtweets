@@ -23,20 +23,22 @@
 <html>
 <head>
 <title>My Retweeted Tweets</title>
+<link rel="stylesheet" type="text/css" media="all" href="style.css" />
 </head>
 <body>
 	<h1>Cool, you've done it!</h1>
+
 	<div id="mtrWidget"
 		style="font-family: verdana, arial, sans; float: left; width: 130px; font-size: 10px; border: 2px solid; padding: 0 4px 0 4px; margin-right: 8px;"></div>
-	<div style="margin-left:150px">
-		<p>You can check the result on the left:</p>
+	<div style="margin-left: 150px">
+		Check the result (with a bit of CSS styles applied) on the left.
 		<h2>Adding the widget to your site:</h2>
 		<p>To add a widget with your retweets, paste the following line
 			where you want it to appear:</p>
 		<pre>&lt;div id="mtrWidget"&gt;&lt;/div&gt;</pre>
-		and put this code just below the
+		<p>and put this code just below the
 		<code>&lt;/html&gt;</code>
-		tag:
+		tag:</p>
 		<pre>&lt;script type="text/javascript"&gt;
 	var mtrWidgetId=<%=id%>;
 	var mtrMaxTweets=5;

@@ -1,0 +1,23 @@
+body {
+	font-family: Verdana, Arial, Sans-Serif, Sans;
+	margin:18px;
+}
+
+p,hr {
+	margin-left: 24px;
+	margin-right: 24px;
+}
+
+hr {
+	margin-top:72px;
+	
+}
+
+p.mtrWidgetLine {
+	margin-left: 0px;
+	margin-right: 4px;
+}
+
+pre {
+	margin-left: 48px;
+}
