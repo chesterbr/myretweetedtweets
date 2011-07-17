@@ -73,30 +73,31 @@ public class RetrieveTweetsServlet extends HttpServlet {
 	private String getJsonWithCache(long id, String callback)
 			throws EntityNotFoundException, TwitterException, CacheException {
 		MemcacheService cache = MemcacheServiceFactory.getMemcacheService();
+		String json;
 		if (cache.contains(id)) {
-			return (String) cache.get(id);
+			json = (String) cache.get(id);
+		} else {
+			User user = new User(id);
+			List<String> statuses = user.getMyRetweetedTweets();
+			StringBuilder sb = new StringBuilder();
+
+			sb.append("{tweets:[");
+			boolean first = true;
+			for (String status : statuses) {
+				sb.append(first ? "" : ",");
+				sb.append("\"");
+				sb.append(escapeHtml(status));
+				sb.append("\"");
+				first = false;
+			}
+			sb.append("]}");
+			json = sb.toString();
+			cache.put(id, json, Expiration.byDeltaSeconds(TWO_HOURS_IN_SECONDS));
 		}
-		User user = new User(id);
-		List<String> statuses = user.getMyRetweetedTweets();
-		StringBuilder sb = new StringBuilder();
 		if (callback != null) {
-			sb.append(callback + "(");
+			return callback + "(" + json + ")";
+		} else {
+			return json;
 		}
-		sb.append("{tweets:[");
-		boolean first = true;
-		for (String status : statuses) {
-			sb.append(first ? "" : ",");
-			sb.append("\"");
-			sb.append(escapeHtml(status));
-			sb.append("\"");
-			first = false;
-		}
-		sb.append("]}");
-		if (callback != null) {
-			sb.append(")");
-		}
-		String json = sb.toString();
-		cache.put(id, json, Expiration.byDeltaSeconds(TWO_HOURS_IN_SECONDS));
-		return json;
 	}
 }
