@@ -3,5 +3,5 @@ function mtrWidgetCallback(tweetsJson){var tweets=tweetsJson.tweets;var mtrHTML=
 +list[i]+"'>"+list[i]+"</a>");}}
 mtrHTML+='<p class="mtrWidgetLine">';mtrHTML+=tweet;mtrHTML+='</p>';numTweets++;if(window.mtrMaxTweets&&numTweets==mtrMaxTweets){break;}}
 var mtrWidget=document.getElementById("mtrWidget");if(mtrWidget){mtrWidget.innerHTML=mtrHTML;}}
-if(window.mtrWidgetId){var url='http://myretweetedtweets.appspot.com/json/'+mtrWidgetId
+if(window.mtrWidgetId&&document.getElementById("mtrWidget")){var url='http://myretweetedtweets.appspot.com/json/'+mtrWidgetId
 +'?callback=mtrWidgetCallback';var script=document.createElement('script');script.setAttribute('src',url);document.getElementsByTagName('head')[0].appendChild(script);}

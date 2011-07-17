@@ -46,7 +46,7 @@ function mtrWidgetCallback(tweetsJson) {
 
 }
 
-if (window.mtrWidgetId) {
+if (window.mtrWidgetId && document.getElementById("mtrWidget")) {
 	var url = 'http://myretweetedtweets.appspot.com/json/' + mtrWidgetId
 			+ '?callback=mtrWidgetCallback';
 	var script = document.createElement('script');
