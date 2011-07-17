@@ -16,6 +16,7 @@
 	<p>
 		<a href="<%=json_url%>"><%=json_url%></a>
 	</p>
+	<p>It supports <a href="http://en.wikipedia.org/wiki/JSONP">jsonp</a> - if you add a "callback" parameter, it will output its value as a padding fucntion.</p>
 	<p>(remember this URL - if you forget it, you will need to redo the
 		authorization).</p>
 </body>
