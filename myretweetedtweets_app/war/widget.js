@@ -13,6 +13,7 @@
 // limitations under the License.
 
 // IF YOU EDIT THIS FILE, RUN jsmin < widget.js > widget-min.js !!!!!
+// (get jsmin via apt/ports/brew or google :-P )
 
 function mtrWidgetCallback(tweetsJson) {
 
