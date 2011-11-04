@@ -15,6 +15,24 @@
 // IF YOU EDIT THIS FILE, RUN jsmin < widget.js > widget-min.js !!!!!
 // (get jsmin via apt/ports/brew or google :-P )
 
+function mtrWidgetLinkRegexp(tweet, regexp, prefix) {
+	var list = tweet.match(regexp);
+	if (list) {
+		for (i = 0; i < list.length; i++) {
+			tweet = tweet.replace(list[i], "<a target='_blank' href='"
+					+ prefix + list[i] + "'>" + list[i] + "</a>");
+		}
+	}
+	return tweet
+}
+
+function mtrWidgetAddLinksToTweet(tweet) {
+	tweet = mtrWidgetLinkRegexp(tweet, /\b(http:\/\/|www\.|http:\/\/www\.)[^ ]{2,100}\b/g, "");
+//	tweet = mtrWidgetLinkRegexp(tweet.match(/\b\@(.)[^ ]{2,100}\b/g);
+//	tweet
+	return tweet;
+}
+
 function mtrWidgetCallback(tweetsJson) {
 
 	var tweets = tweetsJson.tweets;
@@ -22,14 +40,7 @@ function mtrWidgetCallback(tweetsJson) {
 	var numTweets = 0;
 	for (id in tweets) {
 		var tweet = tweets[id];
-		var list = tweet
-				.match(/\b(http:\/\/|www\.|http:\/\/www\.)[^ ]{2,100}\b/g);
-		if (list) {
-			for (i = 0; i < list.length; i++) {
-				tweet = tweet.replace(list[i], "<a target='_blank' href='"
-						+ list[i] + "'>" + list[i] + "</a>");
-			}
-		}
+		tweet = mtrWidgetAddLinksToTweet(tweet);
 		mtrHTML += '<p class="mtrWidgetLine">';
 		mtrHTML += tweet;
 		mtrHTML += '</p>';

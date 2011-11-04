@@ -1,0 +1,35 @@
+<html>
+ <head>
+  <title>Test Page for mrtWidgetAddLinksToTweet(tweet)</title>
+  <script language="javascript" src="jsunit/app/jsUnitCore.js"></script>
+  <script language="javascript" src="../../myretweetedtweets_app/war/widget.js"></script>
+ </head>
+ <body>
+  <script language="javascript">
+    function testWithNoReplacables() {
+    	var tweet = "some tweet with no links";
+    	assertEquals("Tweet "+tweet+" should remain unchanged", tweet, mtrWidgetAddLinksToTweet(tweet));
+    }
+    function testSingleLink() {
+    	var tweet = "9 equations true geeks should (at least pretend to) know: http://t.co/dhDvL9Oi (via @bombox)";
+    	var linkedTweet = "9 equations true geeks should (at least pretend to) know: <a target='_blank' href='http://t.co/dhDvL9Oi'>http://t.co/dhDvL9Oi</a> (via @bombox)";
+    	assertEquals("Should have link", linkedTweet, mtrWidgetAddLinksToTweet(tweet));
+    }
+    function testTwoLinks() {
+    	var tweet = "got some here http://t.co/dhDvL9Oi and there http://bit.ly/whatever you go";
+    	var linkedTweet = "got some here <a target='_blank' href='http://t.co/dhDvL9Oi'>http://t.co/dhDvL9Oi</a> and there <a target='_blank' href='http://bit.ly/whatever'>http://bit.ly/whatever</a> you go";
+    	assertEquals("Should have two links", linkedTweet, mtrWidgetAddLinksToTweet(tweet));
+    }
+    function testLinkOnBeginning() {
+    	var tweet = "http://t.co/dhDvL9Oi is cool";
+    	var linkedTweet = "<a target='_blank' href='http://t.co/dhDvL9Oi'>http://t.co/dhDvL9Oi</a> is cool";
+    	assertEquals("Should have link", linkedTweet, mtrWidgetAddLinksToTweet(tweet));
+    }
+    function testLinkOnEnd() {
+    	var tweet = "cool stuff: http://t.co/dhDvL9Oi";
+    	var linkedTweet = "cool stuff: <a target='_blank' href='http://t.co/dhDvL9Oi'>http://t.co/dhDvL9Oi</a>";
+    	assertEquals("Should have link", linkedTweet, mtrWidgetAddLinksToTweet(tweet));
+    }
+  </script>
+ </body>
+</html>
